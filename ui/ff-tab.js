@@ -2,7 +2,7 @@ import {FFArchive} from '../lib/ff.js';
 import {addTab, hasExtension, createHexView, Tab, saveBinaryArrayAsFile} from './common.js';
 
 let intervalHandle = null;
-const animFrameInterval = 500;
+const animFrameInterval = 120;
 
 class FFArchiveTab extends Tab {
     get category() { return 'ff-tabs'; }
@@ -144,8 +144,8 @@ class FFArchiveTab extends Tab {
         regionMapCtx.lineWidth = 2;
 
         const boundary = getAnimationBoundary(animation.frames);
-        canvas.width = 800; //boundary.w;
-        canvas.height = 600; //boundary.h;
+        canvas.width = boundary.w;
+        canvas.height = boundary.h;
 
         let currentFrame = 0;
         intervalHandle = setInterval(() => {
@@ -154,11 +154,12 @@ class FFArchiveTab extends Tab {
             regionMapCtx.drawImage(imageElement, 0, 0);
 
             //window.requestAnimationFrame(_ => {
+                ctx.clearRect(0, 0, boundary.w, boundary.h);
                 for (let region of frame.regions) {
                     ctx.drawImage(
                         imageElement,
                         region.sourceX, region.sourceY, region.width, region.height,
-                        region.destX, region.destY, region.width, region.height);
+                        region.destX - boundary.x, region.destY - boundary.y, region.width, region.height);
 
                     regionMapCtx.strokeRect(region.sourceX, region.sourceY, region.width, region.height);
                 }
