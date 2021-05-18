@@ -1,0 +1,148 @@
+:root {
+    --app-header-height: 32px;
+    --app-border: 2px solid #000;
+    --app-tab-panel-width: 200px;
+    --app-font: Monospaced, "Courier New";
+    --app-file-list-width: 250px;
+}
+
+html, body, div, p, span, a, ul, li
+{ margin: 0; padding: 0; box-sizing: border-box; }
+
+.app-header, .app-body {
+    width: 100%;
+}
+
+.app-header {
+    height: var(--app-header-height);
+    border-bottom: var(--app-border);
+}
+
+.app-body {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.tabs-section {
+    width: var(--app-tab-panel-width);
+    border-right: var(--app-border);
+    position: absolute;
+    top: var(--app-header-height);
+    left: 0;
+    bottom: 0;
+}
+
+.tab-group {
+    font-family: var(--app-font);
+}
+
+.tab-group .header {
+    padding: 3px 5px;
+    font-weight: bold;
+}
+
+.tab-group li {
+    padding: 3px 5px 3px 20px;
+    cursor: pointer;
+}
+
+.tab-group li.selected,
+.file-list li.selected {
+    color: #fff;
+    background-color: #483d8b;
+}
+
+#tab-container {
+    position: absolute;
+    top: var(--app-header-height);
+    left: var(--app-tab-panel-width);
+    right: 0;
+    bottom: 0;
+}
+
+#tab-container > div {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#tab-container > div.selected {
+    display: block;
+}
+
+.dbf-table {
+    font-family: var(--app-font);
+    border-collapse: collapse;
+    border: 1px solid #444;
+}
+
+.dbf-table th {
+    text-align: left;
+    border: 1px solid #444;
+    background-color: #ddd;
+}
+
+.dbf-table th, .dbf-table td { padding: 3px 5px; }
+
+.dbf-table tr { cursor: pointer; }
+.dbf-table tbody tr:hover {
+    background-color: #4040c0;
+    color: #fff;
+}
+
+.dbf-table tr > td:first-child {
+    text-align: right;
+}
+
+.dbf-table td.type-C {
+    text-align: left;
+}
+.dbf-table td.type-D,
+.dbf-table td.type-F,
+.dbf-table td.type-N,
+.dbf-table td.type-L {
+    text-align: right;
+}
+
+.black-pixel {
+    background-color: black;
+    width: 8px;
+    height: 8px;
+}
+
+.white-pixel {
+    background-color: white;
+    width: 8px;
+    height: 8px;
+}
+
+.file-list {
+    font-family: var(--app-font);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: var(--app-file-list-width);
+    border-right: var(--app-border);
+    overflow-y: auto;
+}
+
+.file-list li {
+    list-style: none;
+    padding: 3px 5px 3px 20px;
+    cursor: pointer;
+}
+
+.file-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: var(--app-file-list-width);
+    overflow: auto;
+}

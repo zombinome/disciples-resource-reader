@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DBF loader</title>
+    <link rel="stylesheet" href="./index.css"/>
+</head>
+<body>
+    <div class="app-header">
+        Please select file to load:
+        <input type="file" accept=".dbf, .mft, .ff" multiple="multiple" id="files"/>
+        <canvas style="width: 24px; height: 24px; float:right" id="test-canvas"></canvas>
+    </div>
+        <div class="tabs-section">
+            <div class="tab-group table-tabs ">
+                <p class="header">DBF tables</p>
+                <ul id="dbf-tabs"></ul>
+            </div>
+            <div class="tab-group font-tabs ">
+                <p class="header">MFT fonts</p>
+                <ul id="mft-tabs"></ul>
+            </div>
+            <div class="tab-group font-tabs ">
+                <p class="header">FF archives</p>
+                <ul id="ff-tabs"></ul>
+            </div>
+        </div>
+
+        <div id="tab-container"></div>
+
+    <script type="module" src="index.js"></script>
+</body>
+</html>
