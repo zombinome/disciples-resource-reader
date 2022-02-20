@@ -33,7 +33,7 @@ export class Tab {
 }
 
 /**
- * @param file {File}
+ * @param file {File|FFArchiveFile}
  * @param ext {string}
  * @return {boolean}
  */
@@ -43,7 +43,7 @@ export function hasExtension(file, ext) {
         return false;
     }
 
-    const fileNameEnd = file.name.substr(file.name.length - extLength).toUpperCase();
+    const fileNameEnd = file.name.substring(file.name.length - extLength).toUpperCase();
     return fileNameEnd === ext.toUpperCase();
 }
 
@@ -60,20 +60,20 @@ export function addTab(tab) {
     allTabs.push(tab);
 }
 
-export function addTab2(category, name, tabElement) {
-    const parent = document.getElementById(category);
-    const tabContainer = document.getElementById('tab-container');
-
-    tabElement.id = 'tab-' + tabCounter++;
-
-    const element = document.createElement('li');
-    element.innerText = name;
-    element.id = 'head-' + tabElement.id;
-    parent.appendChild(element);
-    tabContainer.appendChild(tabElement);
-
-    allTabs.push(element);
-}
+// export function addTab2(category, name, tabElement) {
+//     const parent = document.getElementById(category);
+//     const tabContainer = document.getElementById('tab-container');
+//
+//     tabElement.id = 'tab-' + tabCounter++;
+//
+//     const element = document.createElement('li');
+//     element.innerText = name;
+//     element.id = 'head-' + tabElement.id;
+//     parent.appendChild(element);
+//     tabContainer.appendChild(tabElement);
+//
+//     allTabs.push(element);
+// }
 
 /**
  * @param val {number}
@@ -83,14 +83,14 @@ function padHex(val) {
     return val < 0x10 ? '0' + val.toString(16) : val.toString(16);
 }
 
-const addrPrefix = '00000000';
+const addressPrefix = '00000000';
 /**
- * @param addr {number}
+ * @param address {number}
  * @returns {string}
  */
-function padAddr(addr) {
-    const addrStr = addr.toString(16);
-    return addrPrefix.substr(addrStr.length) + addrStr;
+function padAddress(address) {
+    const addressStr = address.toString(16);
+    return addressPrefix.substring(addressStr.length) + addressStr;
 }
 
 /**
@@ -121,8 +121,8 @@ export function createHexView(binaryData, width) {
 
     const content = [row.join('')];
 
-    let addr = 0;
-    row = [padAddr(addr), ': '];
+    let address = 0;
+    row = [padAddress(address), ': '];
     let rowStr = ['  |'];
     let rowWidth = 0;
     for (let i = 0; i < binaryData.length; i++) {
@@ -141,8 +141,8 @@ export function createHexView(binaryData, width) {
         if (rowWidth >= width) {
             row.push(rowStr.join(''));
             content.push(row.join(''));
-            addr += width;
-            row = [padAddr(addr), ': '];
+            address += width;
+            row = [padAddress(address), ': '];
             rowStr = ['  |'];
             rowWidth -= width;
         }

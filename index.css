@@ -33,6 +33,7 @@ html, body, div, p, span, a, ul, li
     top: var(--app-header-height);
     left: 0;
     bottom: 0;
+    overflow: auto;
 }
 
 .tab-group {
@@ -61,6 +62,7 @@ html, body, div, p, span, a, ul, li
     left: var(--app-tab-panel-width);
     right: 0;
     bottom: 0;
+    overflow: auto;
 }
 
 #tab-container > div {

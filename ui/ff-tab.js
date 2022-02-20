@@ -176,7 +176,7 @@ class FFArchiveTab extends Tab {
 export function loadArchive(loadedData, file) {
     const reader = new FileReader();
     reader.readAsArrayBuffer(file);
-    reader.onload = function (evt) {
+    reader.onload = function (_) {
         const archive = new FFArchive(reader.result);
         const archiveData = {
             archive: archive,

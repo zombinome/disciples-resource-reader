@@ -3,7 +3,6 @@ import {loadTable} from "./ui/table-tab.js";
 import {loadFont} from "./ui/font-tab.js";
 import {loadArchive} from "./ui/ff-tab.js";
 
-
 window.data = loadedData;
 
 /** Load files on select if in file input */
@@ -13,10 +12,9 @@ document.getElementById('files').addEventListener('change', eventArgs => {
 
     const files = document.getElementById('files');
     const totalFiles = files.files.length;
-    const startedAt = new Date();
-    let loadedFiles = 0;
+    // const startedAt = new Date();
+    // let loadedFiles = 0;
     for (let i = 0; i < totalFiles; i++) {
-        const index = i;
         const file = files.files.item(i);
         if (hasExtension(file, '.DBF')) {
             loadTable(loadedData, file);
@@ -40,7 +38,6 @@ document.querySelector('.tabs-section').addEventListener('click', eventArgs => {
     eventArgs.preventDefault();
     eventArgs.stopPropagation();
 
-    const id = target.id;
     const classSelected = 'selected';
     allTabs.forEach(tab => {
         if (tab.tabHeaderElement.id === target.id) {
